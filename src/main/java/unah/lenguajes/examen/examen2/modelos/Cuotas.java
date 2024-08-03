@@ -11,14 +11,15 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+
 @Entity
-@Table(name="cuotas")
+@Table(name = "cuotas")
 @Data
 public class Cuotas {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="codigocuota")
+    @Column(name = "codigocuota")
     private long codigoCuota;
 
     private int mes;
@@ -26,9 +27,4 @@ public class Cuotas {
     private double capital;
 
     private double saldo;
-
-    @JsonIgnore
-    @OneToOne
-    @JoinColumn(name = "dni", referencedColumnName = "dni")
-    private Cliente cliente;
 }

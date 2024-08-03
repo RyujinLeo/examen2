@@ -12,22 +12,21 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name="prestamos")
+@Table(name = "prestamos")
 @Data
 public class Prestamos {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="codioprestamo")
+    @Column(name = "codioprestamo")
     private long codigoPrestamo;
 
-    @Column(name="fechaapertura")
+    @Column(name = "fechaapertura")
     private LocalDate fechaApertura;
 
     private double monto;
@@ -40,8 +39,6 @@ public class Prestamos {
     private int plazo;
 
     @JsonIgnore
-    @JoinColumn(name="dni", referencedColumnName = "dni")
+    @JoinColumn(name = "dni", referencedColumnName = "dni")
     private Cliente cliente;
 }
-
-
