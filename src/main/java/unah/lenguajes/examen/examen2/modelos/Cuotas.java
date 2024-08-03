@@ -7,8 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -22,9 +21,17 @@ public class Cuotas {
     @Column(name = "codigocuota")
     private long codigoCuota;
 
+    @Column(name = "mes")
     private int mes;
-    private double interes;
-    private double capital;
 
+    @Column(name = "interes")
+    private double interes;
+    @Column(name = "capital")
+    private double capital;
+    @Column(name = "saldo")
     private double saldo;
+
+    @JsonIgnore
+    @ManyToOne
+    private Prestamos prestamos;
 }

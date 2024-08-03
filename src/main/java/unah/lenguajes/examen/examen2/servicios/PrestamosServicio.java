@@ -18,4 +18,15 @@ public class PrestamosServicio {
     @Autowired
     private PrestamosRepositorio prestamoRepositorio;
 
+    public Prestamos crearProducto(String dni, Prestamos nvoPrestamo){        
+        if(this.clienteRepositorio.existsById(dni)){
+            nvoPrestamo.setCliente(this.clienteRepositorio.findById(dni).get());
+            return this.prestamoRepositorio.save(nvoPrestamo);
+        }
+
+        return null;
+    }
+
+
+
 }

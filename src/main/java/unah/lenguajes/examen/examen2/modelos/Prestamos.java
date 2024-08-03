@@ -12,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -28,17 +29,20 @@ public class Prestamos {
 
     @Column(name = "fechaapertura")
     private LocalDate fechaApertura;
-
+    @Column(name = "monto")
     private double monto;
 
     @OneToMany(mappedBy = "prestamos", cascade = CascadeType.ALL)
     private List<Cuotas> cuotas;
 
+    @Column(name = "saldo")
     private double saldo;
 
+    @Column(name = "plazo")
     private int plazo;
 
     @JsonIgnore
+    @ManyToOne
     @JoinColumn(name = "dni", referencedColumnName = "dni")
     private Cliente cliente;
 }
