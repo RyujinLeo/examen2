@@ -13,36 +13,31 @@ import unah.lenguajes.examen.examen2.repositorios.ClienteRepositorio;
 import unah.lenguajes.examen.examen2.repositorios.PrestamosRepositorio;
 import unah.lenguajes.examen.examen2.repositorios.CuotasRepositorio;
 
+@SuppressWarnings("unused")
 @Service
 public class ClienteServicio {
-    
+
     @Autowired
     private ClienteRepositorio clienteRepositorio;
 
-    
-
-    public List<Cliente> obtenerTodos(){
+    public List<Cliente> obtenerTodos() {
         return this.clienteRepositorio.findAll();
     }
 
-    public Cliente crearCliente(Cliente nvoCliente){
+    public Cliente crearCliente(Cliente nvoCliente) {
 
-    
-        List<Prestamos> prestamos = nvoCliente.getPrestamos();        
-        if(prestamos!=null){
-            for(Prestamos producto : prestamos){
+        List<Prestamos> prestamos = nvoCliente.getPrestamos();
+        if (prestamos != null) {
+            for (Prestamos producto : prestamos) {
                 producto.setCliente(nvoCliente);
             }
         }
 
         return this.clienteRepositorio.save(nvoCliente);
-     
-        
+
     }
 
-
-
-    public boolean buscarPorIdentidad(String identidad){
+    public boolean buscarPorIdentidad(String identidad) {
         return this.clienteRepositorio.existsById(identidad);
     }
 }

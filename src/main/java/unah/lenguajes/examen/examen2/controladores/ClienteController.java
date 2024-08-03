@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 
 
+@SuppressWarnings("unused")
 @RestController
 @RequestMapping("/api/cliente")
 public class ClienteController {
